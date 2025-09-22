@@ -1,182 +1,482 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alhakim Nur Alam</title>
-    <!-- Use Tailwind CSS from CDN for a modern look -->
+    <title>PT. Alhakim Nur Alam - Leading Software Development Company</title>
+    <meta name="description" content="PT. Alhakim Nur Alam is a leading software development company in Jakarta, Indonesia. We specialize in building scalable web and mobile applications, and custom software solutions.">
+    <meta name="keywords" content="software development, web development, mobile app, custom software, Indonesia, Jakarta, PT Alhakim Nur Alam">
+    <meta name="author" content="PT. Alhakim Nur Alam">
+
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="PT. Alhakim Nur Alam - Leading Software Development Company">
+    <meta property="og:description" content="PT. Alhakim Nur Alam is a passionate team of software developers dedicated to leveraging cutting-edge technologies to solve complex problems and drive innovation.">
+    <meta property="og:image" content="https://placehold.co/1200x630/1e293b/fff?text=PT.++Alhakim+Nur+Alam">
+    <meta property="og:url" content="https://alhakimnuralam.com">
+    <meta property="og:type" content="website">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://alhakimnuralam.com">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a202c; /* A dark background color */
-            color: #e2e8f0; /* Light text color */
+            background-color: #f7fafc;
+        }
+
+        .hero-section {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Testimonial slider styles */
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-item {
+            min-width: 100%;
+            flex-shrink: 0;
         }
     </style>
 </head>
-<body class="antialiased text-gray-200">
+<body class="bg-gray-50 text-gray-800">
 
-    <!-- Hero Section -->
-    <header class="py-16 md:py-24">
-        <div class="container mx-auto px-4 md:px-6 max-w-4xl">
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
-                <!-- Profile Image -->
-                <div class="flex-shrink-0">
-                    <img src="https://placehold.co/150x150/2d3748/a0aec0?text=ANA" alt="Profile Picture" class="rounded-full ring-4 ring-purple-600 shadow-lg">
-                </div>
-                <!-- Intro Text -->
-                <div class="text-center md:text-left">
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-2">
-                        Alhakim Nur Alam
-                    </h1>
-                    <p class="text-xl md:text-2xl font-semibold text-purple-400 mb-4">
-                        Full-Stack Software Engineer
-                    </p>
-                    <p class="max-w-prose text-lg text-gray-400">
-                        Passionate about building scalable, efficient solutions and leveraging cutting-edge technologies to solve complex problems.
-                    </p>
-                </div>
+    <!-- Skip-to-content link for accessibility -->
+    <a href="#main-content" class="skip-link rounded">Skip to main content</a>
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between" role="navigation" aria-label="Main Navigation">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold text-gray-900 flex items-center space-x-2" aria-label="PT. Alhakim Nur Alam Home">
+                    <svg class="w-10 h-10 rounded-full bg-indigo-600 text-white" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logo-title">
+                        <title id="logo-title">PT. Alhakim Nur Alam Logo</title>
+                        <circle cx="50" cy="50" r="50" fill="#4f46e5"/>
+                        <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="bold" fill="white">ANA</text>
+                    </svg>
+                    <span class="hidden sm:inline">PT. Alhakim Nur Alam</span>
+                </a>
             </div>
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300">About</a>
+                <a href="#services" class="text-gray-600 hover:text-indigo-600 transition duration-300">Services</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-indigo-600 transition duration-300">Portfolio</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition duration-300">Contact</a>
+                <a href="#contact" class="px-6 py-2 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition duration-300">Get a Quote</a>
+            </div>
+
+            <!-- Mobile Navigation Toggle -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-indigo-600 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open mobile menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg pb-4" role="menu">
+                <a href="#about" class="block px-6 py-2 text-gray-600 hover:bg-gray-100 transition duration-300" role="menuitem">About</a>
+                <a href="#services" class="block px-6 py-2 text-gray-600 hover:bg-gray-100 transition duration-300" role="menuitem">Services</a>
+                <a href="#portfolio" class="block px-6 py-2 text-gray-600 hover:bg-gray-100 transition duration-300" role="menuitem">Portfolio</a>
+                <a href="#contact" class="block px-6 py-2 text-gray-600 hover:bg-gray-100 transition duration-300" role="menuitem">Contact</a>
+                <a href="#contact" class="block mx-6 mt-2 px-6 py-2 bg-indigo-600 text-white text-center rounded-full shadow-lg hover:bg-indigo-700 transition duration-300" role="menuitem">Get a Quote</a>
         </div>
     </header>
 
-    <!-- Skills Section -->
-    <section class="py-16 bg-gray-900">
-        <div class="container mx-auto px-4 md:px-6 max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 text-center">Skills & Expertise</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Languages -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-purple-600 transition-colors">
-                    <h3 class="text-xl font-semibold mb-4 text-purple-400">Languages</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>JavaScript (ES6+)</li>
-                        <li>TypeScript</li>
-                        <li>Python</li>
-                        <li>Java</li>
-                        <li>Go</li>
-                    </ul>
-                </div>
-                <!-- Frameworks -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-purple-600 transition-colors">
-                    <h3 class="text-xl font-semibold mb-4 text-purple-400">Frameworks & Libraries</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>React & Redux</li>
-                        <li>Node.js & Express</li>
-                        <li>Next.js</li>
-                        <li>Tailwind CSS</li>
-                        <li>Spring Boot</li>
-                    </ul>
-                </div>
-                <!-- Databases & Cloud -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:border-purple-600 transition-colors">
-                    <h3 class="text-xl font-semibold mb-4 text-purple-400">Databases & Cloud</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li>PostgreSQL</li>
-                        <li>MongoDB</li>
-                        <li>Redis</li>
-                        <li>Docker</li>
-                        <li>AWS (EC2, S3)</li>
-                        <li>Google Cloud</li>
-                    </ul>
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section bg-white py-16 md:py-24" role="region" aria-label="Hero Section">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4" data-aos="fade-up">
+                    Building Scalable, Efficient Solutions
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    PT. Alhakim Nur Alam is a passionate team of software developers dedicated to leveraging cutting-edge technologies to solve complex problems and drive innovation.
+                </p>
+                <a href="#contact" class="inline-block px-8 py-4 bg-indigo-600 text-white font-bold rounded-full shadow-xl transform transition duration-300 hover:scale-105 hover:bg-indigo-700" data-aos="fade-up" data-aos-delay="400">Let's Build Something Great Together</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16" role="region" aria-label="About Us">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2" data-aos="fade-right">
+                        <img src="https://placehold.co/800x600/1e293b/fff?text=Our+Team" alt="A diverse group of developers working together in an office." class="rounded-2xl shadow-xl">
+                    </div>
+                    <div class="md:w-1/2" data-aos="fade-left">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
+                        <p class="text-gray-600 mb-4">
+                            At PT. Alhakim Nur Alam, we believe that technology is a powerful tool for transformation. Our team of skilled engineers and creative minds are driven by a shared mission: to craft elegant and functional software that not only meets but exceeds our clients' expectations. We are a team of problem-solvers, continuously learning and adapting to the latest technological trends to deliver solutions that are not just effective today, but are also future-proof.
+                        </p>
+                        <p class="text-gray-600">
+                            We pride ourselves on our collaborative approach, working closely with our clients to understand their unique challenges and goals. This partnership ensures that every solution we build is a true reflection of their vision and a catalyst for their success.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+        <!-- Services Section -->
+        <section id="services" class="py-16 bg-gray-100" role="region" aria-label="Our Services">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12" data-aos="fade-up">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <article class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-2xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full mb-6" aria-hidden="true">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9.75 15L14.25 15L14.25 17M12 21L12 17M12 3V7M21 12H17M3 12H7M12 7V17M12 17H7M17 12V17M12 7H7M17 12H12"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Web Development</h3>
+                        <p class="text-gray-600">We build robust and scalable web applications using modern frameworks like React, Angular, and Vue.js, ensuring a seamless user experience.</p>
+                    </article>
+                    <!-- Service Card 2 -->
+                    <article class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-2xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full mb-6" aria-hidden="true">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Mobile App Development</h3>
+                        <p class="text-gray-600">Our expertise in native and cross-platform development (React Native, Flutter) allows us to create powerful and beautiful mobile apps.</p>
+                    </article>
+                    <!-- Service Card 3 -->
+                    <article class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-2xl transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full mb-6" aria-hidden="true">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Custom Software Solutions</h3>
+                        <p class="text-gray-600">From concept to deployment, we build bespoke software tailored to your specific business needs, ensuring maximum efficiency and impact.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <!-- Projects Section -->
-    <section class="py-16 md:py-24">
-        <div class="container mx-auto px-4 md:px-6 max-w-4xl">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 text-center">Featured Projects</h2>
-            <div class="space-y-8">
-                <!-- Project Card 1 -->
-                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 flex flex-col md:flex-row gap-6 items-center">
-                    <div class="flex-shrink-0">
-                        <img src="https://placehold.co/200x120/2d3748/a0aec0?text=Project+1" alt="Project 1 Thumbnail" class="rounded-lg shadow-md">
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16" role="region" aria-label="Our Portfolio">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12" data-aos="fade-up">Our Recent Work</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Portfolio Item 1 -->
+                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/29/03/40/e-commerce-1867145_1280.jpg" alt="An e-commerce website displayed on a laptop screen with various products" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">E-commerce Platform</h3>
+                            <p class="text-gray-600">A scalable e-commerce solution with a modern and responsive user interface, integrated payment gateways, and a robust backend.</p>
+                        </div>
+                    </article>
+                    <!-- Portfolio Item 2 -->
+                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://cdn.pixabay.com/photo/2021/01/29/18/45/mobile-app-5961601_1280.jpg" alt="A woman at the gym checking her mobile phone, representing a fitness mobile app" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Fitness Mobile App</h3>
+                            <p class="text-gray-600">A mobile application for tracking workouts and nutrition, featuring personalized dashboards and social sharing capabilities.</p>
+                        </div>
+                    </article>
+                    <!-- Portfolio Item 3 -->
+                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://cdn.pixabay.com/photo/2017/08/07/21/51/office-2605335_1280.jpg" alt="A team of people in a corporate office collaborating on a project, representing a corporate website" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Corporate Website</h3>
+                            <p class="text-gray-600">A clean and professional corporate website designed to enhance brand presence and provide a seamless user experience.</p>
+                        </div>
+                    </article>
+                    <!-- Portfolio Item 4 -->
+                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://cdn.pixabay.com/photo/2018/05/29/23/15/graphs-3439930_1280.jpg" alt="An abstract image of a digital graph and data charts, representing a data visualization tool" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Data Visualization Tool</h3>
+                            <p class="text-gray-600">An interactive web application that transforms complex datasets into clear and understandable charts and graphs.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 bg-gray-100" role="region" aria-label="Client Testimonials">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12" data-aos="fade-up">What Our Clients Say</h2>
+                <div class="relative max-w-4xl mx-auto" data-aos="fade-up">
+                    <div class="slider-container rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+                        <div class="slider" id="testimonial-slider">
+                            <!-- Testimonial 1 -->
+                            <figure class="slider-item bg-white p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                                <img src="https://placehold.co/80x80/6366f1/fff?text=AJ" alt="Alex Johnson's avatar" class="rounded-full w-20 h-20 flex-shrink-0">
+                                <div class="flex-grow">
+                                    <blockquote class="text-lg italic text-gray-600 mb-4">
+                                        "Working with PT. Alhakim Nur Alam was a game-changer for our business. Their team delivered a custom software solution that not only solved our core problem but also exceeded our expectations in performance and design. Their professionalism and technical expertise are top-notch."
+                                    </blockquote>
+                                    <figcaption class="font-bold text-gray-900">- Alex Johnson</figcaption>
+                                    <p class="text-sm text-gray-500">CEO, InnovateTech Solutions</p>
+                                </div>
+                            </figure>
+                            <!-- Testimonial 2 -->
+                            <figure class="slider-item bg-white p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                                <img src="https://placehold.co/80x80/6366f1/fff?text=MR" alt="Maria Rodriguez's avatar" class="rounded-full w-20 h-20 flex-shrink-0">
+                                <div class="flex-grow">
+                                    <blockquote class="text-lg italic text-gray-600 mb-4">
+                                        "The mobile app developed by PT. Alhakim Nur Alam has completely transformed our customer engagement. The process was smooth, transparent, and collaborative. They truly listened to our needs and delivered a high-quality product on time. Highly recommended!"
+                                    </blockquote>
+                                    <figcaption class="font-bold text-gray-900">- Maria Rodriguez</figcaption>
+                                    <p class="text-sm text-gray-500">Founder, Global Connect</p>
+                                </div>
+                            </figure>
+                            <!-- Testimonial 3 -->
+                            <figure class="slider-item bg-white p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                                <img src="https://placehold.co/80x80/6366f1/fff?text=SW" alt="Samantha Williams's avatar" class="rounded-full w-20 h-20 flex-shrink-0">
+                                <div class="flex-grow">
+                                    <blockquote class="text-lg italic text-gray-600 mb-4">
+                                        "We needed a scalable web application to handle a growing user base, and PT. Alhakim Nur Alam delivered exactly that. Their team's understanding of complex backend systems and clean, responsive front-end design is exceptional. We couldn't be happier with the result."
+                                    </blockquote>
+                                    <figcaption class="font-bold text-gray-900">- Samantha Williams</figcaption>
+                                    <p class="text-sm text-gray-500">CTO, Data Flow Inc.</p>
+                                </div>
+                            </figure>
+                            <!-- Testimonial 4 -->
+                            <figure class="slider-item bg-white p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                                <img src="https://placehold.co/80x80/6366f1/fff?text=JL" alt="Jason Lee's avatar" class="rounded-full w-20 h-20 flex-shrink-0">
+                                <div class="flex-grow">
+                                    <blockquote class="text-lg italic text-gray-600 mb-4">
+                                        "The team at PT. Alhakim Nur Alam are true experts. They took our initial idea and turned it into a fully functional and beautiful product. Their attention to detail and commitment to quality made the entire development journey a fantastic experience."
+                                    </blockquote>
+                                    <figcaption class="font-bold text-gray-900">- Jason Lee</figcaption>
+                                    <p class="text-sm text-gray-500">Product Manager, Future Labs</p>
+                                </div>
+                            </figure>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Scalable E-commerce Platform</h3>
-                        <p class="text-gray-400 mb-4">
-                            A full-stack e-commerce solution built with Next.js, a Node.js backend, and a PostgreSQL database. Implemented secure payment processing and a real-time inventory system.
-                        </p>
-                        <div class="flex gap-4">
-                            <a href="#" class="inline-block px-6 py-2 rounded-full font-semibold bg-purple-600 text-white shadow-md hover:bg-purple-700 transition-colors">
-                                View Live
-                            </a>
-                            <a href="#" class="inline-block px-6 py-2 rounded-full font-semibold bg-gray-700 text-gray-200 shadow-md hover:bg-gray-600 transition-colors">
-                                GitHub Repo
-                            </a>
+                    <!-- Slider Navigation Buttons -->
+                    <button id="prev-btn" aria-label="Previous testimonial" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg border border-gray-200 text-gray-800 hover:text-indigo-600 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="next-btn" aria-label="Next testimonial" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white rounded-full p-2 shadow-lg border border-gray-200 text-gray-800 hover:text-indigo-600 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section with Accordion -->
+        <section id="faq" class="py-16" role="region" aria-label="Frequently Asked Questions">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12" data-aos="fade-up">Frequently Asked Questions</h2>
+                <div class="max-w-4xl mx-auto space-y-4" data-aos="fade-up">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6" data-aos="fade-up" data-aos-delay="100">
+                        <button class="accordion-header w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false" aria-controls="faq-content-1">
+                            <h3 class="text-xl font-semibold text-gray-900">What is your typical software development process?</h3>
+                            <svg class="w-6 h-6 text-indigo-600 transform transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 15l-6-6h12z"/></svg>
+                        </button>
+                        <div id="faq-content-1" class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <p class="text-gray-600 pt-4">
+                                We follow an agile methodology, which includes discovery, planning, development, testing, and deployment. We emphasize continuous feedback and collaboration with our clients to ensure the final product aligns perfectly with their vision.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6" data-aos="fade-up" data-aos-delay="200">
+                        <button class="accordion-header w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false" aria-controls="faq-content-2">
+                            <h3 class="text-xl font-semibold text-gray-900">What technologies do you specialize in?</h3>
+                            <svg class="w-6 h-6 text-indigo-600 transform transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 15l-6-6h12z"/></svg>
+                        </button>
+                        <div id="faq-content-2" class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <p class="text-gray-600 pt-4">
+                                Our expertise spans a wide range of technologies, including React, Node.js, Python, and various cloud platforms like AWS and Google Cloud. We choose the best technology stack to meet the specific requirements of each project.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6" data-aos="fade-up" data-aos-delay="300">
+                        <button class="accordion-header w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false" aria-controls="faq-content-3">
+                            <h3 class="text-xl font-semibold text-gray-900">How do you ensure the quality of your software?</h3>
+                            <svg class="w-6 h-6 text-indigo-600 transform transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 15l-6-6h12z"/></svg>
+                        </button>
+                        <div id="faq-content-3" class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <p class="text-gray-600 pt-4">
+                                Quality is at the core of our work. We use a combination of automated testing, manual quality assurance, and code reviews to ensure our software is reliable, secure, and performs optimally.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6" data-aos="fade-up" data-aos-delay="400">
+                        <button class="accordion-header w-full flex justify-between items-center text-left focus:outline-none" aria-expanded="false" aria-controls="faq-content-4">
+                            <h3 class="text-xl font-semibold text-gray-900">Can you provide ongoing maintenance and support?</h3>
+                            <svg class="w-6 h-6 text-indigo-600 transform transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 15l-6-6h12z"/></svg>
+                        </button>
+                        <div id="faq-content-4" class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <p class="text-gray-600 pt-4">
+                                Yes, we offer comprehensive post-deployment support and maintenance services to ensure your software remains up-to-date, secure, and fully functional.
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Project Card 2 -->
-                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 flex flex-col md:flex-row gap-6 items-center">
-                    <div class="flex-shrink-0">
-                        <img src="https://placehold.co/200x120/2d3748/a0aec0?text=Project+2" alt="Project 2 Thumbnail" class="rounded-lg shadow-md">
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-gray-100" role="region" aria-label="Contact Us">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4" data-aos="fade-up">Let's Connect</h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                    Ready to start your next project? Get in touch with us to discuss your ideas and find out how we can help you achieve your goals.
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <!-- Contact Info -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 w-full md:w-1/3" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Contact Information</h3>
+                        <p class="text-gray-600 mb-2">Email: <a href="mailto:info@alhakimnuralam.com" class="text-indigo-600 hover:underline">info@alhakimnuralam.com</a></p>
+                        <p class="text-gray-600 mb-2">Phone: +62 123-456-7890</p>
+                        <p class="text-gray-600">Address: 123 Tech Avenue, Jakarta, Indonesia</p>
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Real-time Chat Application</h3>
-                        <p class="text-gray-400 mb-4">
-                            A real-time chat application using React, Node.js with WebSockets, and MongoDB. Features include user authentication, private messaging, and group chats.
-                        </p>
-                        <div class="flex gap-4">
-                            <a href="#" class="inline-block px-6 py-2 rounded-full font-semibold bg-purple-600 text-white shadow-md hover:bg-purple-700 transition-colors">
-                                View Live
-                            </a>
-                            <a href="#" class="inline-block px-6 py-2 rounded-full font-semibold bg-gray-700 text-gray-200 shadow-md hover:bg-gray-600 transition-colors">
-                                GitHub Repo
-                            </a>
-                        </div>
+                    <!-- Call-to-action button -->
+                    <div class="w-full md:w-1/3" data-aos="fade-up" data-aos-delay="300">
+                        <a href="#contact" class="inline-block px-8 py-4 bg-indigo-600 text-white font-bold rounded-full shadow-xl transform transition duration-300 hover:scale-105 hover:bg-indigo-700">Send us a Message</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer & Contact Section -->
-    <footer class="py-12 bg-gray-900">
-        <div class="container mx-auto px-4 md:px-6 max-w-4xl text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's Connect</h2>
-            <p class="text-gray-400 mb-8">
-                I'm always open to new opportunities and collaborations. Feel free to reach out.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 text-white">
-                <a href="#" class="inline-block px-6 py-2 rounded-full font-semibold bg-gray-800 shadow-md hover:bg-gray-700 transition-colors">
-                    GitHub
-                </a>
-                <a href="#" class="inline-block px-6 py-2 rounded-full font-semibold bg-gray-800 shadow-md hover:bg-gray-700 transition-colors">
-                    LinkedIn
-                </a>
-                <button onclick="copyToClipboard('contact@janedoe.com')" class="inline-block px-6 py-2 rounded-full font-semibold bg-purple-600 text-white shadow-md hover:bg-purple-700 transition-colors relative">
-                    Email Me
-                </button>
-            </div>
-            <div id="copy-message" class="mt-4 text-sm text-green-400 opacity-0 transition-opacity duration-300"></div>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8" data-aos="fade-up" role="contentinfo">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 PT. Alhakim Nur Alam. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- AOS JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Function to copy text to the clipboard
-        function copyToClipboard(text) {
-            const tempInput = document.createElement('input');
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
+        AOS.init();
+        
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-            // Show a temporary message
-            const messageElement = document.getElementById('copy-message');
-            messageElement.textContent = 'Email copied to clipboard!';
-            messageElement.classList.remove('opacity-0');
-            messageElement.classList.add('opacity-100');
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+        });
 
-            setTimeout(() => {
-                messageElement.classList.remove('opacity-100');
-                messageElement.classList.add('opacity-0');
-            }, 2000);
+        // Hide mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // Accordion functionality for FAQ section
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const svg = button.querySelector('svg');
+
+                if (button.getAttribute('aria-expanded') === 'true') {
+                    // Close the accordion item
+                    button.setAttribute('aria-expanded', 'false');
+                    content.style.maxHeight = null;
+                    svg.classList.remove('rotate-180');
+                } else {
+                    // Close any other open accordion items before opening the current one
+                    document.querySelectorAll('.accordion-header[aria-expanded="true"]').forEach(openButton => {
+                        openButton.setAttribute('aria-expanded', 'false');
+                        openButton.nextElementSibling.style.maxHeight = null;
+                        openButton.querySelector('svg').classList.remove('rotate-180');
+                    });
+
+                    // Open the current accordion item
+                    button.setAttribute('aria-expanded', 'true');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    svg.classList.add('rotate-180');
+                }
+            });
+        });
+
+        // Testimonial slider functionality
+        const slider = document.getElementById('testimonial-slider');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const slides = document.querySelectorAll('.slider-item');
+        let currentSlide = 0;
+
+        function updateSlider() {
+            // Calculates the translation value based on the current slide index
+            const offset = -currentSlide * slides[0].offsetWidth;
+            slider.style.transform = `translateX(${offset}px)`;
         }
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlider();
+        });
+
+        // Optional: Add touch/swipe functionality for mobile
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        slider.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        slider.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleGesture();
+        });
+
+        function handleGesture() {
+            if (touchendX < touchstartX) {
+                // Swiped left
+                currentSlide = (currentSlide + 1) % slides.length;
+            }
+            if (touchendX > touchstartX) {
+                // Swiped right
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            }
+            updateSlider();
+        }
+        
     </script>
 </body>
 </html>
