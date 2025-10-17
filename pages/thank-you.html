@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Order</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and custom colors -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc; /* Light background for contrast */
+        }
+        .order-detail-card {
+            border-left: 4px solid #3b82f6; /* Accent border */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'success-primary': '#10b981', /* Emerald Green */
+                        'primary-blue': '#3b82f6', /* Standard Blue */
+                    }
+                }
+            }
+        }
+        
+        // Mock data setup for demonstration
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('orderId').textContent = '2024-87654321';
+            document.getElementById('emailAddress').textContent = 'customer.email@example.com';
+            document.getElementById('totalAmount').textContent = '$149.99';
+        });
+    </script>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+
+    <!-- Main Thank You Container -->
+    <div class="w-full max-w-4xl bg-white shadow-xl rounded-xl overflow-hidden my-8">
+
+        <!-- Header: Success Banner -->
+        <header class="bg-success-primary/10 p-6 sm:p-8 flex flex-col items-center border-b border-success-primary/20">
+            <!-- Icon: Checkmark SVG -->
+            <svg class="w-12 h-12 sm:w-16 sm:h-16 text-success-primary mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 text-center tracking-tight mb-2">
+                Order Confirmed!
+            </h1>
+            <p class="text-lg text-gray-600 text-center">
+                Thank you for your purchase. We're getting your items ready for shipment.
+            </p>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="p-6 sm:p-10 grid gap-8 lg:grid-cols-3">
+            
+            <!-- Column 1: Order Summary & Next Steps -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Order Details Card -->
+                <div class="order-detail-card bg-gray-50 p-5 rounded-lg shadow-sm">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Your Details</h2>
+                    <div class="space-y-3 text-sm">
+                        <p class="flex justify-between">
+                            <span class="font-medium text-gray-600">Order ID:</span>
+                            <span class="font-bold text-primary-blue" id="orderId">...</span>
+                        </p>
+                        <p class="flex justify-between">
+                            <span class="font-medium text-gray-600">Total Charged:</span>
+                            <span class="font-bold text-gray-900 text-lg" id="totalAmount">...</span>
+                        </p>
+                        <p class="flex justify-between items-start">
+                            <span class="font-medium text-gray-600">Confirmation Email Sent To:</span>
+                            <span class="text-right font-medium text-gray-700 break-all" id="emailAddress">...</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Next Steps Instructions -->
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3">What Happens Next?</h2>
+                    <ul class="space-y-3 text-gray-700 list-disc pl-5">
+                        <li>
+                            **Check Your Email:** The full order summary and receipt have been sent to your inbox. Please allow a few minutes for it to arrive.
+                        </li>
+                        <li>
+                            **Processing:** Your order will be processed and prepared for shipping within 1-2 business days.
+                        </li>
+                        <li>
+                            **Tracking:** Once your order ships, you will receive a second email with a tracking link so you can follow its journey.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Column 2: Additional Actions & Support -->
+            <div class="lg:col-span-1 space-y-6">
+                
+                <!-- Customer Support -->
+                <div class="bg-primary-blue/5 p-5 rounded-lg shadow-sm border border-primary-blue/20">
+                    <h3 class="font-bold text-primary-blue mb-2 text-lg">Need Assistance?</h3>
+                    <p class="text-sm text-gray-600 mb-4">
+                        If you have any questions about your order, shipping, or returns, please don't hesitate to reach out.
+                    </p>
+                    <a href="#support-link" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-blue hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition duration-150">
+                        Contact Support
+                    </a>
+                </div>
+
+                <!-- Call to Action / Engagement -->
+                <div class="bg-white p-5 rounded-lg shadow-md border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-3 text-lg">Don't Stop Here!</h3>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Explore our latest collections or sign up for exclusive discounts.
+                    </p>
+                    <a href="#shop-link" class="w-full inline-flex justify-center items-center px-4 py-2 text-sm font-medium rounded-md text-primary-blue border border-primary-blue hover:bg-primary-blue/10 transition duration-150">
+                        Continue Shopping
+                    </a>
+                </div>
+
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="bg-gray-800 p-6 sm:p-8 text-center text-sm text-gray-400">
+            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+            <div class="mt-3 space-x-4">
+                <a href="#terms" class="hover:text-white transition">Terms & Conditions</a>
+                <span class="text-gray-600">|</span>
+                <a href="#privacy" class="hover:text-white transition">Privacy Policy</a>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
