@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics & Warehouse Leadership Academy | Program Intensif</title>
+    <!-- Favicon (Boxes Packing Icon) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230B1B3D'/><path fill='%23FACC15' d='M20 14h24v14H20zM12 32h18v18H12zM34 32h18v18H34z'/><path fill='%23D97706' d='M30 14h4v14h-4zM19 32h4v18h-4zM41 32h4v18h-4z'/><circle cx='48' cy='16' r='3' fill='%23FACC15'/></svg>">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0E2246',
+                            900: '#0B1B3D',
+                            950: '#071228',
+                        },
+                        gold: {
+                            400: '#FACC15',
+                            500: '#EAB308',
+                            600: '#D97706',
+                            700: '#B45309',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient {
+            background: linear-gradient(135deg, #FACC15 0%, #D97706 100%);
+        }
+        .navy-gradient {
+            background: linear-gradient(135deg, #0B1B3D 0%, #1E3A8A 100%);
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        /* Force any avatar/picture element to be perfectly round regardless of original aspect ratio */
+        .img-round, img.avatar, .avatar-container img {
+            border-radius: 9999px !important;
+            aspect-ratio: 1 / 1 !important;
+            object-fit: cover !important;
+        }
+
+        /* Custom Animations & Interactivity Styles */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+        .btn-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shine::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-20deg);
+            animation: shine 3s infinite;
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-gold-500 selection:text-navy-900">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-gold-600 via-gold-500 to-amber-600 text-navy-950 font-semibold py-2 px-4 text-center text-xs md:text-sm shadow-inner flex items-center justify-center gap-2">
+        <span class="inline-block animate-pulse bg-navy-950 text-gold-400 px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider">Kuota Terbatas</span>
+        <span>Batch Baru Dibuka! Sisa <span id="slots-left" class="font-bold underline">7 Kursi</span> Lagi Untuk Bulan Ini.</span>
+        <a href="#register" class="hidden sm:inline-flex items-center text-xs font-bold bg-navy-950 text-white px-3 py-1 rounded-full hover:bg-navy-800 transition">Ambil Slot <i class="fas fa-arrow-right ml-1 text-gold-400"></i></a>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-navy-900/95 backdrop-blur border-b border-slate-800 text-white transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg gold-gradient flex items-center justify-center text-navy-950 font-black text-xl shadow-md">
+                    <i class="fas fa-boxes-packing"></i>
+                </div>
+                <div>
+                    <div class="text-xs uppercase tracking-widest text-gold-400 font-bold">Program Intensif</div>
+                    <div class="text-base sm:text-lg font-black leading-tight tracking-tight text-white">LWLA <span class="text-gold-400">Academy</span></div>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-gold-400 transition">Tentang Program</a>
+                <a href="#curriculum" class="hover:text-gold-400 transition">6 Topik Utama</a>
+                <a href="#mentor" class="hover:text-gold-400 transition">Mentor Profile</a>
+                <a href="#benefits" class="hover:text-gold-400 transition">Fasilitas</a>
+                <a href="#calculator" class="hover:text-gold-400 transition">Simulasi ROI</a>
+                <a href="#investment" class="hover:text-gold-400 transition">Biaya</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button onclick="openModal('syllabus')" class="hidden lg:inline-flex items-center gap-2 border border-gold-500/50 hover:border-gold-400 text-gold-400 px-4 py-2 rounded-lg text-sm font-semibold transition hover:bg-gold-500/10">
+                    <i class="fas fa-file-pdf"></i> Unduh Silabus
+                </button>
+                <a href="#register" class="gold-gradient btn-shine text-navy-950 font-bold px-4 sm:px-5 py-2.5 rounded-lg text-xs sm:text-sm hover:brightness-110 transition shadow-lg hover:shadow-gold-500/20">
+                    Daftar Sekarang
+                </a>
+                <!-- Mobile Hamburger Toggle Button -->
+                <button onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="md:hidden text-slate-300 hover:text-gold-400 text-xl p-2 rounded-lg border border-slate-700 bg-navy-950 focus:outline-none">
+                    <i class="fas fa-bars" id="mobile-menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-950/98 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3 text-sm font-medium transition-all">
+            <a href="#about" onclick="closeMobileMenu()" class="block py-2 px-3 rounded-lg text-slate-300 hover:text-gold-400 hover:bg-navy-900 transition"><i class="fas fa-info-circle mr-2 text-gold-400"></i> Tentang Program</a>
+            <a href="#curriculum" onclick="closeMobileMenu()" class="block py-2 px-3 rounded-lg text-slate-300 hover:text-gold-400 hover:bg-navy-900 transition"><i class="fas fa-book mr-2 text-gold-400"></i> 6 Topik Utama</a>
+            <a href="#mentor" onclick="closeMobileMenu()" class="block py-2 px-3 rounded-lg text-slate-300 hover:text-gold-400 hover:bg-navy-900 transition"><i class="fas fa-user-tie mr-2 text-gold-400"></i> Profil Mentor</a>
+            <a href="#benefits" onclick="closeMobileMenu()" class="block py-2 px-3 rounded-lg text-slate-300 hover:text-gold-400 hover:bg-navy-900 transition"><i class="fas fa-gift mr-2 text-gold-400"></i> Fasilitas</a>
+            <a href="#calculator" onclick="closeMobileMenu()" class="block py-2 px-3 rounded-lg text-slate-300 hover:text-gold-400 hover:bg-navy-900 transition"><i class="fas fa-calculator mr-2 text-gold-400"></i> Simulasi ROI</a>
+            <a href="#investment" onclick="closeMobileMenu()" class="block py-2 px-3 rounded-lg text-slate-300 hover:text-gold-400 hover:bg-navy-900 transition"><i class="fas fa-tags mr-2 text-gold-400"></i> Biaya & Promo</a>
+            <div class="pt-2">
+                <button onclick="closeMobileMenu(); openModal('syllabus');" class="w-full flex items-center justify-center gap-2 border border-gold-500/50 text-gold-400 py-2.5 rounded-lg text-xs font-semibold hover:bg-gold-500/10 transition">
+                    <i class="fas fa-file-pdf"></i> Unduh Silabus PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-navy-950 text-white overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#FACC15_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+        <div class="absolute top-1/4 right-0 w-96 h-96 bg-blue-600/20 rounded-full filter blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-10 w-80 h-80 bg-gold-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Column -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left reveal">
+                    <div class="inline-flex items-center gap-2 bg-navy-800 border border-gold-500/30 text-gold-400 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold animate-float">
+                        <i class="fas fa-certificate text-gold-400"></i>
+                        <span>Program Sertifikasi Eksekutif & Praktis</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                        LOGISTICS & WAREHOUSE <br class="hidden sm:block"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-amber-300 to-gold-500">LEADERSHIP ACADEMY</span>
+                    </h1>
+
+                    <p class="text-gold-400 text-lg sm:text-xl font-bold tracking-wide">
+                        Build Your Skills. Lead the Operation.
+                    </p>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Program intensif untuk membangun kemampuan operasional & kepemimpinan tingkat lanjut di bidang Logistik & Warehouse Management. Siapkan diri Anda menjadi praktisi andal dan pemimpin efisien.
+                    </p>
+
+                    <!-- Key Badges Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+                        <div class="bg-navy-900/80 border border-slate-800 p-3 rounded-xl text-center">
+                            <i class="fas fa-calendar-check text-gold-400 text-2xl mb-1"></i>
+                            <div class="text-xs text-slate-400">Pertemuan</div>
+                            <div class="text-sm font-bold text-white">6X Intensif</div>
+                        </div>
+                        <div class="bg-navy-900/80 border border-slate-800 p-3 rounded-xl text-center">
+                            <i class="fas fa-clock text-gold-400 text-2xl mb-1"></i>
+                            <div class="text-xs text-slate-400">Durasi Kelas</div>
+                            <div class="text-sm font-bold text-white">1,5 Bulan</div>
+                        </div>
+                        <div class="bg-navy-900/80 border border-slate-800 p-3 rounded-xl text-center">
+                            <i class="fas fa-briefcase text-gold-400 text-2xl mb-1"></i>
+                            <div class="text-xs text-slate-400">Metode</div>
+                            <div class="text-sm font-bold text-white">Praktis & Aplikatif</div>
+                        </div>
+                        <div class="bg-navy-900/80 border border-slate-800 p-3 rounded-xl text-center">
+                            <i class="fas fa-award text-gold-400 text-2xl mb-1"></i>
+                            <div class="text-xs text-slate-400">Kelulusan</div>
+                            <div class="text-sm font-bold text-white">Sertifikat Resmi</div>
+                        </div>
+                    </div>
+
+                    <!-- Trust Bar -->
+                    <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-slate-400 text-xs sm:text-sm">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-emerald-400"></i> Studi Kasus Industri Nyata
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-emerald-400"></i> Mentoring Langsung Praktisi
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-emerald-400"></i> Template Kerja Siap Pakai
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Column: Direct Lead Form Card -->
+                <div class="lg:col-span-5" id="register">
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 text-slate-900 shadow-2xl border-4 border-gold-500/20 relative">
+                        <!-- Discount Tag -->
+                        <div class="absolute -top-4 right-6 bg-red-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg uppercase tracking-wider animate-bounce">
+                            Promo Batch Terbatas
+                        </div>
+
+                        <div class="text-center mb-6">
+                            <span class="text-xs font-bold uppercase tracking-wider text-navy-800 bg-navy-50 px-3 py-1 rounded-full">Form Pendaftaran Cepat</span>
+                            <h3 class="text-2xl font-black text-navy-900 mt-2">Daftar & Ambil Slot Promo</h3>
+                            <p class="text-xs text-slate-500 mt-1">Isi data di bawah untuk mengunci harga diskon Rp 1.000.000</p>
+                        </div>
+
+                        <form id="hero-lead-form" onsubmit="handleLeadSubmit(event, 'Hero Form')" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Lengkap *</label>
+                                <div class="relative">
+                                    <i class="fas fa-user absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                                    <input type="text" name="name" required placeholder="Contoh: Budi Santoso, S.T." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900 focus:bg-white transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nomor WhatsApp *</label>
+                                <div class="relative">
+                                    <i class="fab fa-whatsapp absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                                    <input type="tel" name="phone" required placeholder="0812xxxxxxx" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900 focus:bg-white transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email Aktif *</label>
+                                <div class="relative">
+                                    <i class="fas fa-envelope absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                                    <input type="email" name="email" required placeholder="budi@perusahaan.com" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900 focus:bg-white transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pekerjaan / Jabatan Saat Ini</label>
+                                <div class="relative">
+                                    <i class="fas fa-user-tie absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+                                    <select name="job" class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900 focus:bg-white transition text-slate-700">
+                                        <option value="Belum Diisi">Pilih Pekerjaan / Posisi</option>
+                                        <option value="Warehouse Supervisor / Manager">Warehouse Supervisor / Manager</option>
+                                        <option value="Logistics & Supply Chain Staff">Logistics & Supply Chain Staff</option>
+                                        <option value="Inventory Control / Admin">Inventory Control / Admin</option>
+                                        <option value="Operations Manager / Team Lead">Operations Manager / Team Lead</option>
+                                        <option value="Business Owner / Entrepreneur">Business Owner / Entrepreneur</option>
+                                        <option value="Fresh Graduate / Jobseeker">Fresh Graduate / Jobseeker</option>
+                                        <option value="Lainnya">Lainnya</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full gold-gradient text-navy-950 font-black py-3.5 px-4 rounded-xl text-base shadow-xl hover:brightness-105 active:scale-[0.99] transition flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp text-lg text-emerald-800"></i>
+                                <span>DAFTAR SEKARANG VIA WHATSAPP</span>
+                            </button>
+
+                            <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+                                <span><i class="fas fa-lock text-emerald-600"></i> Data aman & rahasia</span>
+                                <span><i class="fas fa-bolt text-gold-600"></i> Langsung ke Admin WA</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Metric Counter Bar -->
+    <section class="bg-navy-900 border-y border-slate-800 py-8 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-2">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-gold-400">98.4%</div>
+                    <div class="text-xs sm:text-sm text-slate-300 mt-1">Kepuasan Alumni</div>
+                </div>
+                <div class="p-2">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-gold-400">600+</div>
+                    <div class="text-xs sm:text-sm text-slate-300 mt-1">Profesional Tersertifikasi</div>
+                </div>
+                <div class="p-2">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-gold-400">15+</div>
+                    <div class="text-xs sm:text-sm text-slate-300 mt-1">Ready-to-Use Templates</div>
+                </div>
+                <div class="p-2">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-gold-400">100%</div>
+                    <div class="text-xs sm:text-sm text-slate-300 mt-1">Aplikasi Kasus Nyata</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Summary Banner -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-sm">
+                <div class="max-w-3xl mx-auto text-center space-y-4">
+                    <span class="text-xs font-bold tracking-widest text-gold-600 uppercase bg-gold-50 px-3 py-1 rounded-full border border-gold-200">Mengapa Akademi Ini Berbeda?</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-navy-900">Bukan Sekadar Teori, Ini Adalah Akademi Praktis Pemimpin Operasional</h2>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Di era rantai pasok modern, tantangan gudang bukan lagi sekadar simpan-pinjam barang. Diperlukan kepemimpinan data, efisiensi biaya, akurasi stok tinggi, dan manajemen tim yang adaptif.
+                    </p>
+                </div>
+
+                <!-- 4 Highlights Cards -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 rounded-xl bg-navy-900 text-gold-400 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h4 class="font-bold text-navy-900 text-lg mb-2">6X Pertemuan</h4>
+                        <p class="text-xs text-slate-600">Sesi intensif terstruktur dengan bimbingan langsung, diskusi interaktif, dan feedback modul.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 rounded-xl bg-navy-900 text-gold-400 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h4 class="font-bold text-navy-900 text-lg mb-2">1,5 Bulan Durasi</h4>
+                        <p class="text-xs text-slate-600">Waktu ideal untuk menyerap materi, latihan tools, dan menerapkan ilmu langsung di tempat kerja.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 rounded-xl bg-navy-900 text-gold-400 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4 class="font-bold text-navy-900 text-lg mb-2">Praktis & Aplikatif</h4>
+                        <p class="text-xs text-slate-600">Dilengkapi dengan spreadsheet KPI, kalkulator manpower, dan template SOP gudang.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 rounded-xl bg-navy-900 text-gold-400 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="font-bold text-navy-900 text-lg mb-2">Sertifikat Program</h4>
+                        <p class="text-xs text-slate-600">Sertifikat resmi untuk memperkuat portofolio dan nilai tawar karir profesional Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 Main Topics Section -->
+    <section id="curriculum" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                <span class="inline-block bg-navy-900 text-gold-400 font-bold text-xs uppercase px-3 py-1 rounded-full mb-2">Kurikulum Komprehensif</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900">6 Topik Utama Pembelajaran</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-2">Setiap modul dirancang khusus berdasarkan kebutuhan industri logistik & warehouse modern. <span class="text-gold-600 font-bold">Klik tiap kartu untuk detail silabus modul!</span></p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Topic 1 -->
+                <div onclick="openTopicModal(1)" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group cursor-pointer reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-full gold-gradient text-navy-950 font-black flex items-center justify-center text-lg shadow-md">1</div>
+                        <span class="text-2xl text-navy-900 group-hover:scale-125 transition-transform"><i class="fas fa-warehouse"></i></span>
+                    </div>
+                    <h3 class="font-bold text-navy-900 text-lg mb-2 leading-snug group-hover:text-gold-600 transition-colors">FUNDAMENTAL LOGISTICS & WAREHOUSE MANAGEMENT</h3>
+                    <p class="text-xs text-slate-500 font-medium mb-3">Fondasi & kerangka acuan utama operasional.</p>
+                    <ul class="text-xs text-slate-700 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Konsep dasar logistik modern</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Fungsi & alur kerja gudang</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Proses & penentuan KPI Warehouse</li>
+                    </ul>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy-900 group-hover:text-gold-600">
+                        <span>Lihat Detail Silabus Modul</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Topic 2 -->
+                <div onclick="openTopicModal(2)" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group cursor-pointer reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-full gold-gradient text-navy-950 font-black flex items-center justify-center text-lg shadow-md">2</div>
+                        <span class="text-2xl text-navy-900 group-hover:scale-125 transition-transform"><i class="fas fa-truck-ramp-box"></i></span>
+                    </div>
+                    <h3 class="font-bold text-navy-900 text-lg mb-2 leading-snug group-hover:text-gold-600 transition-colors">WAREHOUSE OPERATION EXCELLENCE</h3>
+                    <p class="text-xs text-slate-500 font-medium mb-3">Optimalisasi alur penerimaan hingga pengiriman.</p>
+                    <ul class="text-xs text-slate-700 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Inbound management & receiving</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Storage strategy & slotting</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Picking, packing & outbound dispatch</li>
+                    </ul>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy-900 group-hover:text-gold-600">
+                        <span>Lihat Detail Silabus Modul</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Topic 3 -->
+                <div onclick="openTopicModal(3)" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group cursor-pointer reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-full gold-gradient text-navy-950 font-black flex items-center justify-center text-lg shadow-md">3</div>
+                        <span class="text-2xl text-navy-900 group-hover:scale-125 transition-transform"><i class="fas fa-clipboard-check"></i></span>
+                    </div>
+                    <h3 class="font-bold text-navy-900 text-lg mb-2 leading-snug group-hover:text-gold-600 transition-colors">INVENTORY MANAGEMENT & ACCURACY</h3>
+                    <p class="text-xs text-slate-500 font-medium mb-3">Menjaga akurasi fisik vs sistem secara konsisten.</p>
+                    <ul class="text-xs text-slate-700 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Stock opname & Cycle count</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Penanganan discrepancy stok</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Root Cause Analysis (RCA)</li>
+                    </ul>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy-900 group-hover:text-gold-600">
+                        <span>Lihat Detail Silabus Modul</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Topic 4 -->
+                <div onclick="openTopicModal(4)" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group cursor-pointer reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-full gold-gradient text-navy-950 font-black flex items-center justify-center text-lg shadow-md">4</div>
+                        <span class="text-2xl text-navy-900 group-hover:scale-125 transition-transform"><i class="fas fa-chart-line"></i></span>
+                    </div>
+                    <h3 class="font-bold text-navy-900 text-lg mb-2 leading-snug group-hover:text-gold-600 transition-colors">PRODUCTIVITY, KPI & COST MANAGEMENT</h3>
+                    <p class="text-xs text-slate-500 font-medium mb-3">Efisiensi anggaran & performa tim operasional.</p>
+                    <ul class="text-xs text-slate-700 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Pengukuran produktivitas kerja</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Perencanaan Manpower Planning</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Cost Per Piece (CPP) & Efficiency</li>
+                    </ul>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy-900 group-hover:text-gold-600">
+                        <span>Lihat Detail Silabus Modul</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Topic 5 -->
+                <div onclick="openTopicModal(5)" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group cursor-pointer reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-full gold-gradient text-navy-950 font-black flex items-center justify-center text-lg shadow-md">5</div>
+                        <span class="text-2xl text-navy-900 group-hover:scale-125 transition-transform"><i class="fas fa-users-gear"></i></span>
+                    </div>
+                    <h3 class="font-bold text-navy-900 text-lg mb-2 leading-snug group-hover:text-gold-600 transition-colors">LEADERSHIP IN WAREHOUSE OPERATION</h3>
+                    <p class="text-xs text-slate-500 font-medium mb-3">Memimpin tim operasional dengan efektif.</p>
+                    <ul class="text-xs text-slate-700 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Style leadership lapangan</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Teknik delegasi & komunikasi</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Coaching & mentoring tim</li>
+                    </ul>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy-900 group-hover:text-gold-600">
+                        <span>Lihat Detail Silabus Modul</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Topic 6 -->
+                <div onclick="openTopicModal(6)" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group cursor-pointer reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-10 h-10 rounded-full gold-gradient text-navy-950 font-black flex items-center justify-center text-lg shadow-md">6</div>
+                        <span class="text-2xl text-navy-900 group-hover:scale-125 transition-transform"><i class="fas fa-lightbulb"></i></span>
+                    </div>
+                    <h3 class="font-bold text-navy-900 text-lg mb-2 leading-snug group-hover:text-gold-600 transition-colors">OPERATIONAL PROBLEM SOLVING & CASE STUDY</h3>
+                    <p class="text-xs text-slate-500 font-medium mb-3">Pengambilan keputusan cepat di situasi kritis.</p>
+                    <ul class="text-xs text-slate-700 space-y-2 border-t border-slate-100 pt-3">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Framework Problem Solving</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Decision making di bawah tekanan</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-gold-500"></i> Continuous Improvement Strategy</li>
+                    </ul>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy-900 group-hover:text-gold-600">
+                        <span>Lihat Detail Silabus Modul</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentor Section -->
+    <section id="mentor" class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                <span class="inline-block bg-gold-500/20 text-gold-700 border border-gold-500/30 font-bold text-xs uppercase px-3 py-1 rounded-full mb-2">Instruktur Utama & Founder</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900">Belajar Langsung dari Pakar Operasional 18+ Tahun</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-2">Kurikulum ini dirancang dan dibimbing langsung oleh praktisi senior yang telah memimpin operasional gudang mega-scale di perusahaan multinasional dan top brand Indonesia.</p>
+            </div>
+
+            <div class="bg-gradient-to-br from-navy-900 via-navy-950 to-slate-900 text-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl border border-slate-800 relative overflow-hidden reveal">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start relative z-10">
+                    
+                    <!-- Avatar & Quick Info Left Column -->
+                    <div class="lg:col-span-4 text-center">
+                        <div class="relative inline-block">
+                            <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full gold-gradient p-1.5 shadow-2xl mx-auto overflow-hidden avatar-container">
+                                <img src="./img/mentor.jpeg" alt="Krisna Sukrisna Yanuar" class="avatar img-round w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full rounded-full bg-navy-900 flex flex-col items-center justify-center p-4 text-center border border-gold-400/30\'><div class=\'w-16 h-16 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center text-3xl mb-2\'><i class=\'fas fa-user-tie\'></i></div><span class=\'text-[10px]\' font-bold text-gold-400 uppercase tracking-widest\'>Lead Mentor</span><span class=\'text-sm font-black text-white mt-0.5\'>Krisna Sukrisna Y.</span></div>';" />
+                            </div>
+                            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-gold-500 text-navy-950 text-[11px] font-black px-3.5 py-1 rounded-full whitespace-nowrap shadow-lg">
+                                <i class="fas fa-certificate mr-1"></i> 18+ Years Experience
+                            </div>
+                        </div>
+
+                        <!-- Mentor Social & Direct Link -->
+                        <div class="mt-6 space-y-2">
+                            <a href="https://www.linkedin.com/in/belajarlogisticianindonesia/" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-3 rounded-xl transition shadow-lg hover:shadow-blue-500/20">
+                                <i class="fab fa-linkedin text-base"></i>
+                                <span>Hubungkan di LinkedIn</span>
+                                <i class="fas fa-external-link-alt text-[10px] opacity-70"></i>
+                            </a>
+                            <div class="text-[11px] text-slate-400 pt-1">
+                                <i class="fas fa-globe text-gold-400 mr-1"></i> Founder: <span class="text-white font-semibold">Belajarlogistician.id</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mentor Details Right Column -->
+                    <div class="lg:col-span-8 space-y-6">
+                        <div>
+                            <div class="inline-flex items-center gap-2 bg-navy-800 text-gold-400 text-xs font-bold px-3 py-1 rounded-lg mb-2 border border-gold-500/20">
+                                <i class="fas fa-award text-gold-400"></i> Logistician Expert & Operational Leader
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Krisna Sukrisna Yanuar</h3>
+                            <p class="text-gold-400 text-sm font-semibold mt-1">
+                                Sub Head Warehouse Operations - Power Commerce Asia | Founder Belajarlogistician.id
+                            </p>
+                        </div>
+
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Praktisi senior dengan pengalaman 18+ tahun memimpin operasional skala nasional di bidang Warehousing, Supply Chain, Logistics, E-commerce Fulfillment, Automotive Milkrun, dan Quality Assurance. Berakar dari pengalaman nyata mengelola belasan gudang raksasa dan tim operasional besar.
+                        </p>
+
+                        <!-- Key Track Record Cards -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            <div class="bg-navy-900/90 border border-slate-800 p-3 rounded-xl text-center">
+                                <div class="text-gold-400 text-lg font-bold">99.60%+</div>
+                                <div class="text-[10px] text-slate-300">Inventory Accuracy (MR DIY)</div>
+                            </div>
+                            <div class="bg-navy-900/90 border border-slate-800 p-3 rounded-xl text-center">
+                                <div class="text-gold-400 text-lg font-bold">15+ Chamber</div>
+                                <div class="text-[10px] text-slate-300">National DC Managed</div>
+                            </div>
+                            <div class="bg-navy-900/90 border border-slate-800 p-3 rounded-xl text-center">
+                                <div class="text-gold-400 text-lg font-bold">395 SKU/hr</div>
+                                <div class="text-[10px] text-slate-300">Picking Productivity / MP</div>
+                            </div>
+                            <div class="bg-navy-900/90 border border-slate-800 p-3 rounded-xl text-center">
+                                <div class="text-gold-400 text-lg font-bold">100+ Unit</div>
+                                <div class="text-[10px] text-slate-300">MHE Fleet Control</div>
+                            </div>
+                        </div>
+
+                        <!-- Corporate Career Experience Badges -->
+                        <div class="space-y-2 pt-2 border-t border-slate-800">
+                            <div class="text-xs font-bold uppercase tracking-wider text-gold-400 mb-2">Rekam Jejak Kepemimpinan Perusahaan:</div>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-navy-800/90 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5">
+                                    <i class="fas fa-boxes-packing text-gold-400"></i> Power Commerce Asia (Sub Head Fulfillment)
+                                </span>
+                                <span class="bg-navy-800/90 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5">
+                                    <i class="fas fa-store text-gold-400"></i> MR DIY Indonesia (Warehouse Ops Manager)
+                                </span>
+                                <span class="bg-navy-800/90 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5">
+                                    <i class="fas fa-truck-fast text-gold-400"></i> DHL Supply Chain (National Ops Manager)
+                                </span>
+                                <span class="bg-navy-800/90 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5">
+                                    <i class="fas fa-car text-gold-400"></i> Puninar Anji NYK (Wuling Motors Project)
+                                </span>
+                                <span class="bg-navy-800/90 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5">
+                                    <i class="fas fa-shirt text-gold-400"></i> PT Sale Stock Indonesia (Warehouse Manager)
+                                </span>
+                                <span class="bg-navy-800/90 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5">
+                                    <i class="fas fa-motorcycle text-gold-400"></i> Yamaha Motor Indonesia & Pertamina Retail
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Industry Domain Expertise -->
+                        <div class="pt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-400 border-t border-slate-800">
+                            <span class="flex items-center gap-1.5"><i class="fas fa-check-circle text-emerald-400"></i> Retail & FMCG DC</span>
+                            <span class="flex items-center gap-1.5"><i class="fas fa-check-circle text-emerald-400"></i> Automotive Line Supply & Milkrun</span>
+                            <span class="flex items-center gap-1.5"><i class="fas fa-check-circle text-emerald-400"></i> E-Commerce Fulfillment SLA</span>
+                            <span class="flex items-center gap-1.5"><i class="fas fa-check-circle text-emerald-400"></i> WMS & Cost Management</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get & Final Challenge Section -->
+    <section id="benefits" class="py-16 bg-navy-950 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- What You Get Left -->
+                <div class="lg:col-span-7 space-y-6 reveal">
+                    <span class="inline-block bg-gold-500/20 border border-gold-500/40 text-gold-400 font-bold text-xs uppercase px-3 py-1 rounded-full">Paket Fasilitas Peserta</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Apa Yang Anda Dapatkan?</h2>
+                    <p class="text-slate-300 text-sm sm:text-base">Seluruh perlengkapan pendukung untuk memastikan Anda siap menerapkannya langsung di gudang Anda.</p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                        <div class="flex items-start gap-3 bg-navy-900 p-4 rounded-xl border border-slate-800">
+                            <i class="fas fa-book-open text-gold-400 text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Modul Premium</h4>
+                                <p class="text-xs text-slate-400">Akses materi lengkap bertaraf profesional.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 bg-navy-900 p-4 rounded-xl border border-slate-800">
+                            <i class="fas fa-file-excel text-gold-400 text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Tools & Template Praktis</h4>
+                                <p class="text-xs text-slate-400">Ready-to-use template kalkulasi & SOP.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 bg-navy-900 p-4 rounded-xl border border-slate-800">
+                            <i class="fas fa-folder-open text-gold-400 text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Case Study Nyata</h4>
+                                <p class="text-xs text-slate-400">Studi kasus permasalahan riil gudang lokal.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 bg-navy-900 p-4 rounded-xl border border-slate-800">
+                            <i class="fas fa-tasks text-gold-400 text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Assignment Terarah</h4>
+                                <p class="text-xs text-slate-400">Tugas terpandu untuk menguji pemahaman.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 bg-navy-900 p-4 rounded-xl border border-slate-800">
+                            <i class="fas fa-award text-gold-400 text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Sertifikat Program</h4>
+                                <p class="text-xs text-slate-400">Sertifikat resmi kelulusan akademi.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 bg-navy-900 p-4 rounded-xl border border-slate-800">
+                            <i class="fas fa-users text-gold-400 text-xl mt-0.5"></i>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Group Discussion & Networking</h4>
+                                <p class="text-xs text-slate-400">Grup alumni lintas perusahaan logistik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Challenge Card Right -->
+                <div class="lg:col-span-5 reveal">
+                    <div class="bg-gradient-to-br from-gold-500 to-amber-600 rounded-3xl p-8 text-navy-950 shadow-2xl relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl font-black">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+
+                        <div class="inline-flex items-center gap-2 bg-navy-950 text-gold-400 text-xs font-bold px-3 py-1 rounded-full mb-4">
+                            <i class="fas fa-bullseye"></i> HIGH VALUE PROJECT
+                        </div>
+
+                        <h3 class="text-2xl font-black tracking-tight mb-2">FINAL CHALLENGE</h3>
+                        <p class="text-sm font-semibold mb-6 text-navy-900">
+                            Setiap peserta akan mengerjakan proyek nyata:
+                        </p>
+
+                        <div class="bg-navy-950/90 text-white rounded-2xl p-6 border border-gold-400/30 shadow-xl mb-6">
+                            <div class="text-xs text-gold-400 font-bold uppercase tracking-wider mb-1">Judul Project Portofolio</div>
+                            <div class="text-lg font-black text-white">"Warehouse Operational Improvement Plan"</div>
+                            <p class="text-xs text-slate-300 mt-2">
+                                Rencana perbaikan langsung yang bisa Anda presentasikan di tempat kerja Anda sendiri untuk kenaikan performa atau promosi jabatan!
+                            </p>
+                        </div>
+
+                        <button onclick="openModal('register')" class="w-full bg-navy-950 hover:bg-navy-900 text-white font-bold py-3.5 px-6 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-lg">
+                            <span>DAFTAR DENGAN PROYEK PORTFOLIO</span>
+                            <i class="fas fa-arrow-right text-gold-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator Widget Section -->
+    <section id="calculator" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="bg-gradient-to-br from-slate-900 to-navy-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl border border-slate-800">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-xs font-bold uppercase tracking-widest text-gold-400">Simulasi Dampak Karir & Efisiensi</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-1">Berapa Nilai Investasi Rp 1 Juta Untuk Gudang Anda?</h2>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-2">Gunakan kalkulator di bawah ini untuk melihat estimasi potensi penghematan kerugian akibat discrepancy stok yang bisa Anda cegah setelah mengikuti akademi ini.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center bg-navy-950/60 p-6 rounded-2xl border border-slate-800">
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="block text-xs font-semibold text-slate-300">Estimasi Nilai Total Inventaris Gudang / Bulan:</label>
+                                <span class="text-sm font-bold text-gold-400" id="inventory-val">Rp 300.000.000</span>
+                            </div>
+                            <input type="range" id="inventory-slider" min="50000000" max="2000000000" step="50000000" value="300000000" oninput="updateCalculator()" class="w-full accent-gold-500 cursor-pointer h-2 bg-slate-700 rounded-lg">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="block text-xs font-semibold text-slate-300">Rata-rata Discrepancy Stok Saat Ini (%):</label>
+                                <span class="text-sm font-bold text-gold-400" id="discrepancy-val">2.0 %</span>
+                            </div>
+                            <input type="range" id="discrepancy-slider" min="0.5" max="5.0" step="0.1" value="2.0" oninput="updateCalculator()" class="w-full accent-gold-500 cursor-pointer h-2 bg-slate-700 rounded-lg">
+                        </div>
+
+                        <!-- Efficiency Progress Bar -->
+                        <div class="pt-2">
+                            <div class="flex justify-between text-[11px] text-slate-400 mb-1">
+                                <span>Target Efisiensi Penurunan Discrepancy</span>
+                                <span class="text-emerald-400 font-bold">70% Optimization Rate</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-500" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-navy-900 p-6 rounded-xl border border-gold-500/20 text-center space-y-3">
+                        <div class="text-xs text-slate-400 uppercase tracking-wider">Estimasi Kebocoran / Kerugian Stok Per Bulan</div>
+                        <div class="text-2xl font-black text-red-400 transition-all" id="loss-val">Rp 6.000.000</div>
+                        
+                        <div class="border-t border-slate-800 pt-3">
+                            <div class="text-xs text-slate-400 uppercase tracking-wider">Potensi Hemat / Bulan (Efisiensi LWLA)</div>
+                            <div class="text-3xl font-extrabold text-emerald-400 transition-all" id="savings-val">Rp 4.200.000</div>
+                        </div>
+                        <p class="text-[11px] text-slate-400 pt-1">
+                            *Investasi ilmu Rp 1.000.000 kembali hanya dalam hitungan minggu lewat pencegahan kebocoran stok!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment & Offer Section -->
+    <section id="investment" class="py-20 bg-slate-100 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-8 reveal">
+                <span class="bg-gold-500/20 text-gold-700 font-bold text-xs uppercase px-3 py-1 rounded-full border border-gold-500/30">Investasi Terjangkau, Hasil Maksimal</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-900 mt-2">Investasi Karir Masa Depan</h2>
+                <p class="text-slate-600 text-sm mt-2">Dapatkan seluruh akses 6 pertemuan, materi premium, tools, dan sertifikat.</p>
+            </div>
+
+            <!-- Interactive Batch Option Selector -->
+            <div class="flex justify-center mb-6 reveal">
+                <div class="bg-white p-1 rounded-2xl border border-slate-200 shadow-sm inline-flex">
+                    <button id="batch-btn-weekend" onclick="switchBatch('weekend')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-navy-900 text-white transition-all shadow-md">
+                        <i class="fas fa-calendar-day mr-1.5 text-gold-400"></i> Batch Weekend (Sabtu & Minggu)
+                    </button>
+                    <button id="batch-btn-executive" onclick="switchBatch('executive')" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-navy-900 transition-all">
+                        <i class="fas fa-user-clock mr-1.5 text-navy-900"></i> Batch Executive (Jumat Malam)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pricing Card -->
+            <div class="bg-white rounded-3xl border-2 border-gold-500 shadow-2xl overflow-hidden relative reveal">
+                
+                <div class="bg-navy-900 text-white p-6 sm:p-8 text-center relative">
+                    <div id="batch-badge" class="inline-block bg-gold-500 text-navy-950 text-xs font-black px-4 py-1 rounded-full uppercase tracking-widest mb-3">
+                        Batch Weekend - Sisa 7 Kursi
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold">LOGISTICS & WAREHOUSE LEADERSHIP ACADEMY</h3>
+                    <p id="batch-schedule-desc" class="text-xs text-gold-300 mt-1 font-semibold"><i class="fas fa-clock mr-1"></i> Mulai Sabtu Depan | Pukul 19.30 - 21.30 WIB</p>
+                    
+                    <div class="mt-6 flex items-center justify-center gap-2">
+                        <span class="text-slate-400 text-lg line-through">Rp 2.500.000</span>
+                        <span class="bg-red-500 text-white text-xs font-extrabold px-2 py-0.5 rounded">HEMAT 60%</span>
+                    </div>
+
+                    <div class="text-4xl sm:text-5xl font-black text-gold-400 mt-1">
+                        Rp 1.000.000
+                    </div>
+                    <p class="text-xs text-slate-300 mt-2">6X PERTEMUAN SELAMA 1,5 BULAN</p>
+                </div>
+
+                <div class="p-6 sm:p-10 space-y-6">
+                    <h4 class="font-bold text-navy-900 text-center text-sm uppercase tracking-wider">Semua Yang Anda Dapatkan Dalam Paket Ini:</h4>
+                    
+                    <div class="grid sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-700">
+                        <div class="flex items-center gap-2.5">
+                            <i class="fas fa-check-circle text-emerald-500 text-base"></i> 6 Sesi Pertemuan Live Interactive
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fas fa-check-circle text-emerald-500 text-base"></i> Akses Modul Materi PDF Premium
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fas fa-check-circle text-emerald-500 text-base"></i> Template Excel KPI & Manpower
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fas fa-check-circle text-emerald-500 text-base"></i> Rekaman Ulang Setiap Sesi
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fas fa-check-circle text-emerald-500 text-base"></i> Review Project Mentoring
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fas fa-check-circle text-emerald-500 text-base"></i> Sertifikat Kelulusan Resmi
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fas fa-check-circle text-emerald-500 text-base"></i> Komunitas Alumni Logistik
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i class="fas fa-check-circle text-emerald-500 text-base"></i> Gratis Konsultasi Singkat
+                        </div>
+                    </div>
+
+                    <!-- Countdown Box -->
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-center">
+                        <div class="text-xs text-slate-500 font-semibold mb-2 uppercase tracking-wider">Promo Berakhir Dalam:</div>
+                        <div class="flex justify-center items-center gap-4 text-navy-900 font-extrabold" id="countdown-timer">
+                            <div class="bg-white px-3 py-2 rounded-lg shadow border"><span id="cd-hours" class="text-xl font-black text-gold-600">12</span><div class="text-[10px] text-slate-400 font-normal">Jam</div></div> :
+                            <div class="bg-white px-3 py-2 rounded-lg shadow border"><span id="cd-minutes" class="text-xl font-black text-gold-600">45</span><div class="text-[10px] text-slate-400 font-normal">Menit</div></div> :
+                            <div class="bg-white px-3 py-2 rounded-lg shadow border"><span id="cd-seconds" class="text-xl font-black text-gold-600">30</span><div class="text-[10px] text-slate-400 font-normal">Detik</div></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <a href="#register" class="w-full block text-center gold-gradient text-navy-950 font-black py-4 rounded-xl text-base shadow-xl hover:brightness-105 transition">
+                            <i class="fas fa-paper-plane mr-2"></i> DAFTAR SEKARANG JUGA
+                        </a>
+                        <p class="text-center text-xs text-slate-500">
+                            <i class="fas fa-shield-alt text-emerald-600"></i> Garansi Pendaftaran Aman & Transparan
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote & Testimonial Section -->
+    <section class="py-16 bg-navy-900 text-white relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <!-- Poster Quote Highlight -->
+            <div class="bg-navy-950/80 border border-gold-500/30 rounded-3xl p-8 sm:p-12 shadow-2xl relative">
+                <i class="fas fa-quote-left text-gold-500/20 text-6xl absolute top-6 left-6"></i>
+                <i class="fas fa-quote-right text-gold-500/20 text-6xl absolute bottom-6 right-6"></i>
+
+                <blockquote class="text-xl sm:text-2xl font-bold text-gold-400 italic max-w-3xl mx-auto relative z-10">
+                    "Jadilah pemimpin operasi yang andal, efisien, dan berorientasi pada hasil."
+                </blockquote>
+                <div class="text-xs text-slate-400 uppercase tracking-widest font-semibold mt-4">
+                    — Visi Utama Logistics & Warehouse Leadership Academy
+                </div>
+            </div>
+
+            <!-- Alumni Testimonials Grid -->
+            <div class="grid md:grid-cols-2 gap-6 mt-12 text-left">
+                <div class="bg-navy-800/80 p-6 rounded-2xl border border-slate-700 space-y-3">
+                    <div class="flex items-center gap-1 text-gold-400 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 italic">
+                        "Materi Cost Per Piece (CPP) dan Manpower Planning sangat aplikatif! Langsung saya terapkan di gudang FMCG tempat saya kerja, akurasi stok naik ke 99.2%."
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <div class="w-10 h-10 rounded-full bg-gold-500 text-navy-950 font-bold flex items-center justify-center text-sm shadow-md shrink-0">RH</div>
+                        <div>
+                            <div class="text-sm font-bold text-white">Rian Hidayat</div>
+                            <div class="text-xs text-slate-400">Warehouse Supervisor - E-Commerce Fulfillment</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-navy-800/80 p-6 rounded-2xl border border-slate-700 space-y-3">
+                    <div class="flex items-center gap-1 text-gold-400 text-xs">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 italic">
+                        "Sesi Leadership & RCA membuka mata saya bagaimana menyelesaikan discrepancy stok bukan dengan menyalahkan tim, tapi perbaikan sistem yang berkelanjutan."
+                    </p>
+                    <div class="flex items-center gap-3 pt-2">
+                        <div class="w-10 h-10 rounded-full bg-gold-500 text-navy-950 font-bold flex items-center justify-center text-sm shadow-md shrink-0">DN</div>
+                        <div>
+                            <div class="text-sm font-bold text-white">Dewi Nusantara</div>
+                            <div class="text-xs text-slate-400">Inventory Controller - Manufacturing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 reveal">
+                <span class="text-xs font-bold text-gold-600 uppercase tracking-widest">Pertanyaan Umum</span>
+                <h2 class="text-3xl font-extrabold text-navy-900 mt-1">Sering Ditanyakan (FAQ)</h2>
+                
+                <!-- FAQ Filter Search Bar -->
+                <div class="max-w-md mx-auto mt-4 relative">
+                    <i class="fas fa-search absolute left-4 top-3.5 text-slate-400 text-sm"></i>
+                    <input type="text" id="faq-search" oninput="filterFaq()" placeholder="Cari pertanyaan (contoh: online, sertifikat, jadwal)..." class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-navy-900 transition">
+                </div>
+            </div>
+
+            <div class="space-y-4" id="faq-container">
+                
+                <div class="faq-item border border-slate-200 rounded-xl overflow-hidden reveal">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 font-bold text-navy-900 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition">
+                        <span>Apakah kelas dilakukan secara online atau offline?</span>
+                        <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="hidden p-5 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed">
+                        Kelas diselenggarakan secara **Online Live Interactive** via Zoom / Google Meet, sehingga peserta dari seluruh Indonesia dapat berpartisipasi. Rekaman ulang juga disediakan jika Anda terhalang hadir.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-slate-200 rounded-xl overflow-hidden reveal">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 font-bold text-navy-900 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition">
+                        <span>Bagaimana jadwal 6 kali pertemuan tersebut?</span>
+                        <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="hidden p-5 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed">
+                        Sesi diadakan 1x seminggu (misal: Sabtu malam / Minggu pagi) selama 1,5 bulan agar Anda memiliki waktu cukup untuk mempraktikkan materi di tempat kerja.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-slate-200 rounded-xl overflow-hidden reveal">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 font-bold text-navy-900 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition">
+                        <span>Apakah pemula / fresh graduate boleh bergabung?</span>
+                        <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="hidden p-5 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed">
+                        Sangat boleh. Materi disusun dari fundamental hingga level strategic leadership, lengkap dengan penjelasan istilah teknis operasional.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-slate-200 rounded-xl overflow-hidden reveal">
+                    <button onclick="toggleFaq(this)" class="w-full text-left p-4 sm:p-5 font-bold text-navy-900 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition">
+                        <span>Bagaimana cara pembayaran dan konfirmasinya?</span>
+                        <i class="fas fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="hidden p-5 text-xs sm:text-sm text-slate-600 bg-white border-t border-slate-100 leading-relaxed">
+                        Setelah mengisi form pendaftaran, tim admin kami akan langsung menghubungi Anda via WhatsApp untuk memberikan rincian pembayaran (Transfer Bank / Virtual Account / e-Wallet) & mengonfirmasi slot Anda.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call To Action Banner -->
+    <section class="py-16 gold-gradient text-navy-950">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h2 class="text-3xl sm:text-4xl font-black tracking-tight">Tingkatkan Kompetensi, Raih Karir Lebih Tinggi!</h2>
+            <p class="text-sm sm:text-base font-semibold max-w-2xl mx-auto text-navy-900">
+                Jangan lewatkan kesempatan menguasai manajemen gudang profesional dengan biaya investasi terjangkau.
+            </p>
+            <div class="pt-2">
+                <a href="#register" class="inline-flex items-center gap-2 bg-navy-950 hover:bg-navy-900 text-white font-black px-8 py-4 rounded-xl text-lg shadow-2xl transition">
+                    <span>DAFTAR SEKARANG JUGA</span>
+                    <i class="fas fa-arrow-right text-gold-400"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 text-slate-400 py-12 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center gap-2 text-white font-bold text-base mb-3">
+                    <i class="fas fa-boxes-packing text-gold-400"></i> LOGISTICS & WAREHOUSE LEADERSHIP ACADEMY
+                </div>
+                <p class="text-slate-400 leading-relaxed">
+                    Program intensif pelatihan operasional & kepemimpinan gudang profesional untuk mendorong efisiensi rantai pasok industri.
+                </p>
+            </div>
+
+            <div>
+                <h5 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Tautan Cepat</h5>
+                <ul class="space-y-2">
+                    <li><a href="#curriculum" class="hover:text-gold-400 transition">6 Topik Utama</a></li>
+                    <li><a href="#mentor" class="hover:text-gold-400 transition">Profil Mentor</a></li>
+                    <li><a href="#benefits" class="hover:text-gold-400 transition">Fasilitas Peserta</a></li>
+                    <li><a href="#calculator" class="hover:text-gold-400 transition">Simulasi Efisiensi</a></li>
+                    <li><a href="#investment" class="hover:text-gold-400 transition">Biaya Program</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h5 class="text-white font-bold mb-3 uppercase tracking-wider text-xs">Hubungi Kami</h5>
+                <p class="mb-2"><i class="fab fa-whatsapp text-emerald-400 mr-2"></i> WhatsApp: +62 812-3456-7890</p>
+                <p class="mb-2"><i class="fas fa-envelope text-gold-400 mr-2"></i> Email: info@warehouseacademy.id</p>
+                <p><i class="fas fa-map-marker-alt text-red-400 mr-2"></i> Jakarta, Indonesia</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 mt-8 border-t border-slate-900 text-center text-slate-500">
+            &copy; 2026 Logistics & Warehouse Leadership Academy. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Modal Registration / Download Syllabus -->
+    <div id="lead-modal" class="fixed inset-0 z-50 hidden bg-navy-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl border border-slate-200">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-lg">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div id="modal-content">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Message Container -->
+    <div id="toast-notification" class="fixed bottom-20 sm:bottom-6 right-6 z-50 hidden bg-navy-900 text-white border border-gold-500/50 p-4 rounded-xl shadow-2xl max-w-xs text-xs flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full gold-gradient text-navy-950 font-bold flex items-center justify-center shrink-0">
+            <i class="fas fa-check"></i>
+        </div>
+        <div>
+            <div class="font-bold text-gold-400" id="toast-title">Pendaftaran Terikirim!</div>
+            <div class="text-slate-300" id="toast-msg">Tim kami akan mengontak Anda via WhatsApp.</div>
+        </div>
+    </div>
+
+    <!-- Sticky Mobile CTA Bar -->
+    <div class="fixed bottom-0 left-0 right-0 z-30 bg-navy-900 border-t border-slate-800 p-3 flex items-center justify-between lg:hidden shadow-2xl">
+        <div>
+            <div class="text-[10px] text-slate-400 uppercase font-semibold">Investasi Program</div>
+            <div class="text-base font-black text-gold-400">Rp 1.000.000</div>
+        </div>
+        <a href="#register" class="gold-gradient btn-shine text-navy-950 font-black px-5 py-2.5 rounded-lg text-xs hover:brightness-105 transition shadow-lg">
+            Daftar Sekarang <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+    </div>
+
+    <!-- Live Social Proof Notification Pop-up Ticker -->
+    <div id="social-proof-ticker" class="fixed bottom-20 lg:bottom-6 left-6 z-40 transform translate-y-24 opacity-0 transition-all duration-500 bg-white border border-slate-200 text-slate-800 p-3.5 rounded-2xl shadow-2xl max-w-xs flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-gold-100 text-gold-700 font-bold flex items-center justify-center text-sm shrink-0 border border-gold-300">
+            <i class="fas fa-user-check"></i>
+        </div>
+        <div class="text-xs">
+            <div class="font-bold text-navy-900" id="sp-name">Budi Santoso (Surabaya)</div>
+            <div class="text-slate-500" id="sp-action">Baru saja mendaftar Batch Weekend</div>
+            <div class="text-[10px] text-gold-600 font-medium mt-0.5" id="sp-time"><i class="fas fa-clock text-[9px] mr-1"></i>2 menit yang lalu</div>
+        </div>
+    </div>
+
+    <script>
+        // Admin WhatsApp Target Number (Format: Country Code + Number without + or spaces)
+        const ADMIN_WA_NUMBER = "6281234567890";
+
+        // Curriculum Topic Detailed Data for Interactive Modal
+        const topicDetails = {
+            1: {
+                title: "1. FUNDAMENTAL LOGISTICS & WAREHOUSE MANAGEMENT",
+                sub: "Fondasi & Kerangka Acuan Utama Operasional Gudang Modern",
+                items: [
+                    "Pengenalan rantai pasok (Supply Chain Management) terintegrasi",
+                    "Peran strategis warehouse dalam profitabilitas perusahaan",
+                    "Karakteristik & tipe-tipe gudang (FMCG, Retail, E-commerce, Automotive)",
+                    "Menetapkan key metrics & KPI utama gudang"
+                ],
+                deliverable: "Template Checklist Standar Audit Gudang"
+            },
+            2: {
+                title: "2. WAREHOUSE OPERATION EXCELLENCE",
+                sub: "Optimalisasi Alur Inbound, Storage, Putaway & Outbound Dispatch",
+                items: [
+                    "SOP Receiving & Quality Gate Control yang ketat",
+                    "Strategi Slotting & Layouting berdasarkan ABC Analysis",
+                    "Optimasi teknik Picking (Batch, Zone, Wave Picking)",
+                    "Strategi Dispatch & Zero Shipping Error Management"
+                ],
+                deliverable: "Layout Slotting Planner & Picking Efficiency Calculator"
+            },
+            3: {
+                title: "3. INVENTORY MANAGEMENT & ACCURACY",
+                sub: "Menjaga Akurasi Fisik vs Sistem Secara Konsisten di Atas 99%",
+                items: [
+                    "Metode Cycle Count harian vs Stock Opname berkala",
+                    "Sistem pencatatan discrepancy stok & penanganannya",
+                    "Teknik Root Cause Analysis (Fishbone & 5-Why Framework)",
+                    "Pencegahan loss & barang rusak (Damaged & Expired Control)"
+                ],
+                deliverable: "Spreadsheet Root Cause Analysis (RCA) & Log Discrepancy"
+            },
+            4: {
+                title: "4. PRODUCTIVITY, KPI & COST MANAGEMENT",
+                sub: "Efisiensi Biaya Operasional & Perencanaan Tenaga Kerja",
+                items: [
+                    "Kalkulasi Cost Per Piece (CPP) & Cost Per Order (CPO)",
+                    "Kalkulator Manpower Planning sesuai proyeksi volume barang",
+                    "Analisis produktivitas individu & tim (Lines/Hour)",
+                    "Strategi penghematan biaya Material Handling Equipment (MHE)"
+                ],
+                deliverable: "Kalkulator Excel Manpower & Cost Per Piece (CPP)"
+            },
+            5: {
+                title: "5. LEADERSHIP IN WAREHOUSE OPERATION",
+                sub: "Memimpin Tim Lapangan dengan Komunikasi & Delegasi Efektif",
+                items: [
+                    "Gaya kepemimpinan situasional di area operasional/pabrik",
+                    "Teknik Daily Briefing / Floor Huddle yang membakar semangat",
+                    "Coaching & Mentoring staf bermasalah",
+                    "Manajemen konflik & membangun tim berkinerja tinggi"
+                ],
+                deliverable: "Panduan Script Daily Briefing & Form Evaluasi Coaching"
+            },
+            6: {
+                title: "6. OPERATIONAL PROBLEM SOLVING & CASE STUDY",
+                sub: "Pengambilan Keputusan Cepat di Situasi Kritis & Proyek Akhir",
+                items: [
+                    "Studi kasus nyata penumpukan stok saat High Season / Peak Day",
+                    "Framework pengambilan keputusan cepat saat sistem down",
+                    "Continuous Improvement (Kaizen / 5S) di lingkungan kerja",
+                    "Panduan penyusunan proyek akhir 'Warehouse Improvement Plan'"
+                ],
+                deliverable: "SOP Template Warehouse Operational Improvement Plan"
+            }
+        };
+
+        function openTopicModal(topicId) {
+            const topic = topicDetails[topicId];
+            if (!topic) return;
+
+            const modal = document.getElementById('lead-modal');
+            const content = document.getElementById('modal-content');
+
+            content.innerHTML = `
+                <div class="text-left">
+                    <div class="inline-flex items-center gap-1.5 bg-navy-900 text-gold-400 text-[11px] font-bold px-3 py-1 rounded-full mb-3">
+                        <i class="fas fa-book-open"></i> MODUL DETIL BATCH ACADEMY
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-navy-900 leading-snug">${topic.title}</h3>
+                    <p class="text-xs text-slate-500 font-semibold mt-1 mb-4">${topic.sub}</p>
+
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 mb-4 space-y-2">
+                        <div class="text-xs font-bold uppercase tracking-wider text-navy-900 mb-2">Pokok Bahasan Utama:</div>
+                        ${topic.items.map(item => `
+                            <div class="flex items-start gap-2 text-xs text-slate-700">
+                                <i class="fas fa-check-circle text-gold-500 mt-0.5"></i>
+                                <span>${item}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="bg-amber-50 rounded-xl p-3 border border-amber-200 mb-5 flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold shrink-0">
+                            <i class="fas fa-download text-sm"></i>
+                        </div>
+                        <div>
+                            <div class="text-[11px] font-bold text-amber-900 uppercase">Template/Tool Diberikan:</div>
+                            <div class="text-xs font-semibold text-amber-800">${topic.deliverable}</div>
+                        </div>
+                    </div>
+
+                    <button onclick="closeModal(); openModal('register');" class="w-full gold-gradient text-navy-950 font-black py-3 rounded-xl text-sm shadow-lg hover:brightness-105 transition flex items-center justify-center gap-2">
+                        <span>DAFTAR DENGAN MODUL INI</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        // Batch Switcher Interactive Functionality
+        function switchBatch(type) {
+            const btnWeekend = document.getElementById('batch-btn-weekend');
+            const btnExecutive = document.getElementById('batch-btn-executive');
+            const badge = document.getElementById('batch-badge');
+            const desc = document.getElementById('batch-schedule-desc');
+
+            if (type === 'weekend') {
+                btnWeekend.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-navy-900 text-white transition-all shadow-md";
+                btnExecutive.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-navy-900 transition-all";
+                badge.innerText = "Batch Weekend - Sisa 7 Kursi";
+                desc.innerHTML = `<i class="fas fa-clock mr-1"></i> Mulai Sabtu Depan | Pukul 19.30 - 21.30 WIB`;
+            } else {
+                btnExecutive.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-navy-900 text-white transition-all shadow-md";
+                btnWeekend.className = "px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-600 hover:text-navy-900 transition-all";
+                badge.innerText = "Batch Executive - Sisa 4 Kursi";
+                desc.innerHTML = `<i class="fas fa-clock mr-1"></i> Mulai Jumat Depan | Pukul 19.00 - 21.30 WIB`;
+            }
+        }
+
+        // FAQ Filter functionality
+        function filterFaq() {
+            const query = document.getElementById('faq-search').value.toLowerCase();
+            const items = document.querySelectorAll('.faq-item');
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Social Proof Dynamic Ticker
+        const socialProofData = [
+            { name: "Budi Santoso (Surabaya)", action: "Baru saja mendaftar Batch Weekend", time: "2 menit yang lalu" },
+            { name: "Rendra Pratama (Bekasi)", action: "Mengunduh Silabus Lengkap LWLA", time: "5 menit yang lalu" },
+            { name: "Siti Rahmawati (Jakarta)", action: "Mengunci Slot Promo Rp 1.000.000", time: "8 menit yang lalu" },
+            { name: "Ahmad Fauzi (Tangerang)", action: "Baru saja mendaftar Batch Executive", time: "12 menit yang lalu" }
+        ];
+
+        let spIndex = 0;
+        function showSocialProofTicker() {
+            const ticker = document.getElementById('social-proof-ticker');
+            const data = socialProofData[spIndex];
+
+            document.getElementById('sp-name').innerText = data.name;
+            document.getElementById('sp-action').innerText = data.action;
+            document.getElementById('sp-time').innerHTML = `<i class="fas fa-clock text-[9px] mr-1"></i>` + data.time;
+
+            ticker.classList.remove('translate-y-24', 'opacity-0');
+
+            setTimeout(() => {
+                ticker.classList.add('translate-y-24', 'opacity-0');
+            }, 5000);
+
+            spIndex = (spIndex + 1) % socialProofData.length;
+        }
+
+        // Setup Intersection Observer for Scroll Reveals
+        function setupScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(elem => {
+                observer.observe(elem);
+            });
+        }
+
+        // Interactive Calculator Logic
+        function updateCalculator() {
+            const inventory = parseFloat(document.getElementById('inventory-slider').value);
+            const discrepancy = parseFloat(document.getElementById('discrepancy-slider').value);
+
+            // Format numbers to IDR
+            document.getElementById('inventory-val').innerText = 'Rp ' + inventory.toLocaleString('id-ID');
+            document.getElementById('discrepancy-val').innerText = discrepancy.toFixed(1) + ' %';
+
+            const monthlyLoss = inventory * (discrepancy / 100);
+            const potentialSavings = monthlyLoss * 0.70; // 70% efficiency improvement
+
+            document.getElementById('loss-val').innerText = 'Rp ' + Math.round(monthlyLoss).toLocaleString('id-ID');
+            document.getElementById('savings-val').innerText = 'Rp ' + Math.round(potentialSavings).toLocaleString('id-ID');
+        }
+
+        // Countdown Timer Logic
+        function startCountdown() {
+            let hours = 12, minutes = 45, seconds = 30;
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                        if (hours < 0) {
+                            hours = 23;
+                        }
+                    }
+                }
+                const hElem = document.getElementById('cd-hours');
+                const mElem = document.getElementById('cd-minutes');
+                const sElem = document.getElementById('cd-seconds');
+                if (hElem && mElem && sElem) {
+                    hElem.innerText = hours.toString().padStart(2, '0');
+                    mElem.innerText = minutes.toString().padStart(2, '0');
+                    sElem.innerText = seconds.toString().padStart(2, '0');
+                }
+            }, 1000);
+        }
+
+        // FAQ Toggle
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Mobile Menu Navigation Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = 'fas fa-times';
+            } else {
+                menu.classList.add('hidden');
+                icon.className = 'fas fa-bars';
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (menu && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+                if (icon) icon.className = 'fas fa-bars';
+            }
+        }
+
+        // Modal Management
+        function openModal(type) {
+            const modal = document.getElementById('lead-modal');
+            const content = document.getElementById('modal-content');
+
+            if (type === 'syllabus') {
+                content.innerHTML = `
+                    <div class="text-center mb-4">
+                        <div class="w-12 h-12 bg-gold-100 text-gold-600 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900">Unduh Silabus Lengkap (PDF)</h3>
+                        <p class="text-xs text-slate-500 mt-1">Dapatkan rincian modul & materi lengkap 6x pertemuan via WhatsApp</p>
+                    </div>
+                    <form onsubmit="handleLeadSubmit(event, 'Download Silabus PDF')" class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Lengkap *</label>
+                            <input type="text" name="name" required placeholder="Nama Anda" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nomor WhatsApp *</label>
+                            <input type="tel" name="phone" required placeholder="0812xxxxxxx" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email *</label>
+                            <input type="email" name="email" required placeholder="email@contoh.com" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900">
+                        </div>
+                        <button type="submit" class="w-full gold-gradient text-navy-950 font-extrabold py-3 rounded-lg text-sm shadow-md hover:brightness-105 transition flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-emerald-800 text-lg"></i>
+                            <span>KIRIM SILABUS KE WHATSAPP SAYA</span>
+                        </button>
+                    </form>
+                `;
+            } else if (type === 'register') {
+                content.innerHTML = `
+                    <div class="text-center mb-4">
+                        <div class="w-12 h-12 bg-navy-100 text-navy-900 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900">Kunci Slot Pendaftaran</h3>
+                        <p class="text-xs text-slate-500 mt-1">Ambil promo terbatas Rp 1.000.000 via WhatsApp</p>
+                    </div>
+                    <form onsubmit="handleLeadSubmit(event, 'Modal Registration')" class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Lengkap *</label>
+                            <input type="text" name="name" required placeholder="Nama Lengkap" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nomor WhatsApp *</label>
+                            <input type="tel" name="phone" required placeholder="0812xxxxxxx" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Email *</label>
+                            <input type="email" name="email" required placeholder="email@contoh.com" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Pekerjaan / Jabatan</label>
+                            <select name="job" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-navy-900 text-slate-700">
+                                <option value="Belum Diisi">Pilih Pekerjaan / Posisi</option>
+                                <option value="Warehouse Supervisor / Manager">Warehouse Supervisor / Manager</option>
+                                <option value="Logistics & Supply Chain Staff">Logistics & Supply Chain Staff</option>
+                                <option value="Inventory Control / Admin">Inventory Control / Admin</option>
+                                <option value="Operations Manager / Team Lead">Operations Manager / Team Lead</option>
+                                <option value="Business Owner / Entrepreneur">Business Owner / Entrepreneur</option>
+                                <option value="Fresh Graduate / Jobseeker">Fresh Graduate / Jobseeker</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full gold-gradient text-navy-950 font-extrabold py-3 rounded-lg text-sm shadow-md hover:brightness-105 transition flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-emerald-800 text-lg"></i>
+                            <span>KONFIRMASI PENDAFTARAN VIA WA</span>
+                        </button>
+                    </form>
+                `;
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('lead-modal').classList.add('hidden');
+        }
+
+        // Form Submission & WhatsApp Redirection Handling
+        function handleLeadSubmit(e, source) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            
+            const name = formData.get('name') || form.querySelector('input[name="name"]')?.value || '-';
+            const phone = formData.get('phone') || form.querySelector('input[name="phone"]')?.value || '-';
+            const email = formData.get('email') || form.querySelector('input[name="email"]')?.value || '-';
+            const job = formData.get('job') || form.querySelector('select[name="job"]')?.value || 'Belum Diisi';
+            
+            const currentBatch = document.getElementById('batch-badge')?.innerText || 'Batch Weekend';
+
+            let waMessage = "";
+
+            if (source.includes('Silabus')) {
+                waMessage = `Halo Admin LWLA Academy, saya mau mengunduh *Silabus Lengkap Logistics & Warehouse Leadership Academy*.\n\n` +
+                            `*Data Peminta Silabus:*\n` +
+                            `• *Nama Lengkap:* ${name}\n` +
+                            `• *No. WhatsApp:* ${phone}\n` +
+                            `• *Email:* ${email}\n\n` +
+                            `Mohon dikirimkan file PDF silabus ke nomor WhatsApp ini. Terima kasih!`;
+            } else {
+                waMessage = `Halo Admin LWLA Academy, saya berminat untuk *daftar & kunci slot promo Rp 1.000.000*!\n\n` +
+                            `*Data Pendaftaran:*\n` +
+                            `• *Nama Lengkap:* ${name}\n` +
+                            `• *No. WhatsApp:* ${phone}\n` +
+                            `• *Email:* ${email}\n` +
+                            `• *Pekerjaan/Jabatan:* ${job}\n` +
+                            `• *Program:* ${currentBatch}\n\n` +
+                            `Mohon informasi rekening bank & instruksi konfirmasi pendaftaran selanjutnya. Terima kasih!`;
+            }
+
+            const waUrl = `https://wa.me/${ADMIN_WA_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+
+            closeModal();
+
+            // Decrease slots count for urgency demo
+            const slotsElem = document.getElementById('slots-left');
+            if (slotsElem) {
+                let currentSlots = parseInt(slotsElem.innerText);
+                if (currentSlots > 2) {
+                    slotsElem.innerText = (currentSlots - 1) + ' Kursi';
+                }
+            }
+
+            // Show Toast Notification
+            showToast('Mengarahkan ke WhatsApp...', 'Membuka WhatsApp untuk mengirim data pendaftaran Anda.');
+
+            // Open WhatsApp link in new window/tab
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 600);
+
+            // Reset form
+            if (form && typeof form.reset === 'function') {
+                form.reset();
+            }
+        }
+
+        function showToast(title, msg) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-msg').innerText = msg;
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Initialize on Load
+        window.onload = function() {
+            startCountdown();
+            updateCalculator();
+            setupScrollReveal();
+
+            // Trigger live social proof ticker every 8 seconds
+            setTimeout(showSocialProofTicker, 3000);
+            setInterval(showSocialProofTicker, 10000);
+        };
+    </script>
+</body>
+</html>
